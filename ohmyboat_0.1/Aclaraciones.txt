@@ -1,0 +1,2 @@
+relative flex flex-col min-h-screen --> Sirve para que la pagina no se vea rara y no se corte la pagina
+con sticky se mantiene pegado en la pagina.
