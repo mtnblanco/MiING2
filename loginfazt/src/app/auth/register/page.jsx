@@ -8,7 +8,7 @@ function RegisterPage(){
     const onSubmit = handleSubmit(async (data) => {
 
         if (data.password !== data.confirmPassword) {
-            alert("Passwords do not match");
+            alert("Las contraseñas no coinciden");
         }
 
 
@@ -33,17 +33,17 @@ function RegisterPage(){
 
     return (
     <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
-        <form onSubmit={onSubmit} className="w-1/4">
-            <h1 className="text-slate-200 font-bold text-4xl mb-4 ">
-                Register
+        <form onSubmit={onSubmit} className="w-1/4 bg-white p-8 rounded-lg shadow-lg">
+            <h1 className="font-bold text-4xl mb-4 text-center animate-color-change ">
+                Registrarse
             </h1> 
 
             <label htmlFor="username" className="text-slate-500 mb-2 block text-sm">
-                Username
+                Nombre:
             </label>
-            <input type="text" { ...register("username",{required:{value:true, message:"Username is required"}})}
+            <input type="text" { ...register("username",{required:{value:true, message:"Este campo es obligatorio"}})}
             className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
-            placeholder="infacoc :P"/>
+            placeholder="tincho"/>
             {
                 errors.username && (
                     <span className="text-red-500 text-sm">{errors.username.message}</span>
@@ -51,9 +51,9 @@ function RegisterPage(){
             }
 
             <label htmlFor="email" className="text-slate-500 mb-2 block text-sm">
-                email
+                Mail:
             </label>
-            <input type="email" { ...register("email",{required:{value:true, message:"Email is required"}})}
+            <input type="email" { ...register("email",{required:{value:true, message:"Este campo es obligatorio"}})}
             className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
             placeholder="tinchotech@gmail.com"/>
             {/* Indico el error */}
@@ -64,11 +64,11 @@ function RegisterPage(){
             }
 
             <label htmlFor="password" className="text-slate-500 mb-2 block text-sm">
-                password
+                Contraseña:
             </label>
-            <input type="password" { ...register("password",{required:{value:true, message:"Password is required"}})}
+            <input type="password" { ...register("password",{required:{value:true, message:"Este campo es obligatorio"}})}
             className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
-            placeholder="supersecretpassword123"/>
+            placeholder="******"/>
             
             {
                 errors.password && (
@@ -77,11 +77,11 @@ function RegisterPage(){
             }
             
             <label htmlFor="confirmPassword" className="text-slate-500 mb-2 block text-sm">
-            Confirm Password
+            Confirma la contraseña:
             </label>
-            <input type="password" { ...register("confirmPassword",{required:{value:true, message:"Confirm password"}})}
+            <input type="password" { ...register("confirmPassword",{required:{value:true, message:"Este campo es obligatorio"}})}
             className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
-            placeholder="confirm your password"/>
+            placeholder="******"/>
 
             {
                 errors.confirmPassword && (
@@ -89,8 +89,8 @@ function RegisterPage(){
                 )
             }
 
-            <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2">
-                Register
+            <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2 transition duration-300 ease-in-out transform hover:bg-blue-600 hover:scale-105">
+                Registrarse
             </button>
         </form>
     </div>

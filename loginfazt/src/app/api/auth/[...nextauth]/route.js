@@ -2,7 +2,7 @@ import NextAuth from "next-auth/next";
 import CredentialProvider from "next-auth/providers/credentials";
 import { prisma } from "@/libs/db";
 
-const authOptions = {
+export const authOptions = {
     providers: [
         CredentialProvider({
             name: "Credentials",
@@ -32,9 +32,9 @@ const authOptions = {
     ],
     pages: {
         signIn: "/auth/login",
-       
     }
 };
+
 
 const handler = NextAuth(authOptions);
 

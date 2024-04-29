@@ -21,25 +21,26 @@ function LoginPage(){
         } else {
             console.log("enviando a /dashboard")
             router.push("/dashboard")
+            router.refresh()
         }
     })
 
 
     return (
     <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
-        <form onSubmit={onSubmit} className="w-1/4">
+        <form onSubmit={onSubmit} className="w-1/4 bg-white p-8 rounded-lg shadow-lg">
         {error && (
             <p className="bg-red-500 text-lg text-white p-3 rounded">{error}</p>
         )}
-        <h1 className="text-slate-200 font-bold text-4xl mb-4 ">
-                Login
+        <h1 className="font-bold text-4xl mb-4 text-center animate-color-change">
+                Iniciar Sesion
         </h1> 
         <label htmlFor="email" className="text-slate-500 mb-2 block text-sm">
-                Email:
+                Mail:
         </label>
-        <input type="email" { ...register("email",{required:{value:true, message:"Email is required"}})}
+        <input type="email" { ...register("email",{required:{value:true, message:"Este campo es obligatorio"}})}
             className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
-            placeholder="infacoc@gmail.com"
+            placeholder="ohmyboat@gmail.com"
         />
         {
             errors.email && (
@@ -49,21 +50,21 @@ function LoginPage(){
 
 
         <label htmlFor="password" className="text-slate-500 mb-2 block text-sm">
-            Password
+            Contraseña:
         </label>
-        <input type="password" { ...register("password",{required:{value:true, message:"Password is required"}})}
+        <input type="password" { ...register("password",{required:{value:true, message:"Este campo es obligatorio"}})}
             className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
             placeholder="******"
         />
 
         {
-            errors.username && (
+            errors.password && (
                 <span className="text-red-500 text-sm">{errors.password.message}</span>
             )
         }
 
-        <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2">
-            Login
+        <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2 transition duration-300 ease-in-out transform hover:bg-blue-600 hover:scale-105">
+        Iniciar Sesión
         </button>
 
         </form>

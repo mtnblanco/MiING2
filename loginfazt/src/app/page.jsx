@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Home() {
+function HomePage() {
   return (
     <section className="h-[calc(100vh-7rem)] flex justify-center items-center">
         <div>
@@ -11,3 +11,4 @@ export default function Home() {
     </section>
   );
 }
+export default HomePage
