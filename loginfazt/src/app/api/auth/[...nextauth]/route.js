@@ -16,10 +16,10 @@ export const authOptions = {
                         email: credentials.email,
                     },
                 })
-                if (!userFound) throw new Error("User not found")
+                if (!userFound) throw new Error("Usuario no encontrado")
                 const matchPassword = credentials.password === userFound.password //hacerlo con bcrypt para encriptadas
                 console.log(matchPassword)
-                if (!matchPassword) throw new Error("Password incorrect")
+                if (!matchPassword) throw new Error("Contraseña incorrecta. Intente nuevamente.")
 
                 return {
                     id: userFound.id,

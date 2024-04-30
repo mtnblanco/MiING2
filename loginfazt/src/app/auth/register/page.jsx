@@ -1,10 +1,12 @@
 "use client"
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 function RegisterPage(){
 
     const { register, handleSubmit, formState: {errors } } = useForm();
     const router = useRouter();
+    const [error, setError] = useState(null);
     const onSubmit = handleSubmit(async (data) => {
 
         if (data.password !== data.confirmPassword) {
@@ -24,8 +26,11 @@ function RegisterPage(){
             },
             });
 
-            if (res.ok){ //si se pudo crear correctamente el usuario
+            if (res.ok){ //si se pudo crear correctamente el usuario     
                 router.push("/api/auth/signin");
+            } else {
+                setError("El mail ya está registrado.");
+
             }
             console.log(res);
     });
@@ -34,6 +39,10 @@ function RegisterPage(){
     return (
     <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
         <form onSubmit={onSubmit} className="w-1/4 bg-white p-8 rounded-lg shadow-lg">
+            {error && (
+            <p className="bg-red-500 text-sm text-white p-2 rounded">{error}</p>
+            )}
+
             <h1 className="font-bold text-4xl mb-4 text-center animate-color-change ">
                 Registrarse
             </h1> 
