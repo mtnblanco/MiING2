@@ -24,4 +24,8 @@ IMPORTANTE!!! USAR SUDO ANTES DE UN COMANDO SI ALGUNO TIRA ERROR(ej: sudo npx pr
 
 ------------------  
 
+Por el momento estamos usando tambien
+--> npm install next-auth
+--> npm install react-hook-form
+--> npm install bcrypt
 aniadir mas data adelante...  
