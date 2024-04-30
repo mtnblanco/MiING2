@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 function RegisterPage(){
 
-    const { register, handleSubmit, formState: {errors } } = useForm();
+    const { register, handleSubmit, formState: {errors} } = useForm();
     const router = useRouter();
     const [error, setError] = useState(null);
     const onSubmit = handleSubmit(async (data) => {
@@ -17,7 +17,8 @@ function RegisterPage(){
        const res = await fetch("/api/auth/register", {
             method: "POST",
             body: JSON.stringify({
-                username: data.username,
+                firstname: data.firstname,
+                lastname: data.lastname,
                 email: data.email,
                 password: data.password,
             }),
@@ -47,15 +48,28 @@ function RegisterPage(){
                 Registrarse
             </h1> 
 
-            <label htmlFor="username" className="text-slate-500 mb-2 block text-sm">
+            <label htmlFor="firstname" className="text-slate-500 mb-2 block text-sm">
                 Nombre:
             </label>
-            <input type="text" { ...register("username",{required:{value:true, message:"Este campo es obligatorio"}})}
+            <input type="text" { ...register("firstname",{required:{value:true, message:"Este campo es obligatorio"}})}
             className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
             placeholder="tincho"/>
             {
-                errors.username && (
-                    <span className="text-red-500 text-sm">{errors.username.message}</span>
+                errors.firstname && (
+                    <span className="text-red-500 text-sm">{errors.firstname.message}</span>
+                )
+            }
+            
+
+            <label htmlFor="lastname" className="text-slate-500 mb-2 block text-sm">
+                Apellido:
+            </label>
+            <input type="text" { ...register("lastname",{required:{value:true, message:"Este campo es obligatorio"}})}
+            className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
+            placeholder="tech"/>
+            {
+                errors.lastname && (
+                    <span className="text-red-500 text-sm">{errors.lastname.message}</span>
                 )
             }
 

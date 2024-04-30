@@ -21,7 +21,8 @@ export async function POST(request) {
     //const hashedPassword = await hash(data.password, 10); con esto la encripto
     const newUser = await prisma.user.create({
         data: {
-            username: data.username,
+            firstname: data.firstname,
+            lastname: data.lastname,
             email: data.email,
             password: data.password, //pongo hashedPassword si la encripto
         },
