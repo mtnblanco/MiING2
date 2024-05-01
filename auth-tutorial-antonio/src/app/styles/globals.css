@@ -6,6 +6,11 @@
     height: 100%;
   }
   
+    .bg-celeste {
+      background-color: #48bfe7;
+      /* Color celeste */
+    }
+
   @keyframes color-change {
     0% { color: #2D3748; } /* slate-900 */
     50% { color: #667EEA; } /* Indigo-500 */
@@ -15,6 +20,7 @@
   .animate-color-change {
     animation: color-change 3s infinite alternate;
   }
+
 
 
   @layer base {
