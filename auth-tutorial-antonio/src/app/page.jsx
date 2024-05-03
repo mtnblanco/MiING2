@@ -3,6 +3,16 @@ import { useRouter } from "next/navigation"
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils"
 
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
+
 const font = Poppins({
   subsets: ["latin"],
   weight: ["600"],
@@ -20,6 +30,10 @@ export default function Home() {
   const [publicaciones, setPublicaciones] = useState([]);
   const router = useRouter();
 
+  const publicacionesPerPage = 12;
+  const [startIndex, setStartIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(publicacionesPerPage);
+
   useEffect(() => {
     const fetchPublicaciones = async () => {
       try {
@@ -34,9 +48,7 @@ export default function Home() {
   }, []);
 
   const onClick = async () => {
-    console.log("entra onclick")
     const res = await fakeDataGenerator(3);
-    router.refresh(); //no refresca, no funciona
     console.log(res);
   }
 
@@ -49,7 +61,7 @@ export default function Home() {
       </h1>
       <Button onClick={onClick}>Generador</Button>
       <section className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-        {publicaciones.map((publicacion) => (
+        {publicaciones.slice(startIndex, endIndex).map((publicacion) => (
           <CardPublicacion
             key={publicacion.id}
             marina={publicacion.marina}
@@ -60,6 +72,31 @@ export default function Home() {
         ))}
       </section>
     </section>
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              className={
+                startIndex === 0 ? "pointer-events-none opacity-50" : undefined
+              }
+              onClick={() => {
+                setStartIndex(startIndex - publicacionesPerPage);
+                setEndIndex(endIndex - publicacionesPerPage);
+              }} />
+          </PaginationItem>
+
+          <PaginationItem>
+            <PaginationNext
+              className={
+                endIndex >=  publicaciones.length  ? "pointer-events-none opacity-50" : undefined //aca tendria q poner la cant de publicaciones totales dividido la cantidad de publicaciones por pagina pero no se como hacerlo
+              }
+              onClick={() => {
+                setStartIndex(startIndex + publicacionesPerPage); 
+                setEndIndex(endIndex + publicacionesPerPage); 
+              }} />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
   </main>
 );
 

@@ -7,7 +7,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
 export default function CardPublicacion({marina, modelo, nombre, img}) {
     return (
         <div>
@@ -18,7 +17,7 @@ export default function CardPublicacion({marina, modelo, nombre, img}) {
                 </CardHeader>
                 <CardContent>
                     <div>
-                        <Image src='/auth-tutorial-antonio/public/barco.jpg' width='50' height='25' alt='Imagen'/>
+                        <img src='https://cnnespanol.cnn.com/wp-content/uploads/2023/10/231019093315-01-three-year-cruise-more-obstacles.jpg?quality=100&strip=info&w=940&h=530&crop=1' width='50' height='25' alt='Imagen'/>
                     </div>
                 </CardContent>
                 <CardFooter>
